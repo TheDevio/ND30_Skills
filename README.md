@@ -1,4 +1,4 @@
-# 📜 ND30\_-_Skills: Bộ hỗ trợ soạn thảo Văn bản Hành chính chuẩn Nghị định 30/2020/NĐ-CP
+# 📜 ND30_Skills: Bộ hỗ trợ soạn thảo Văn bản Hành chính chuẩn Nghị định 30/2020/NĐ-CP
 
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 ![Version](https://img.shields.io/badge/Version-1.0.0-blue.svg)
