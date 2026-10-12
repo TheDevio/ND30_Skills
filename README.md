@@ -8,18 +8,18 @@
 
 ---
 
-## ✨ Tính năng nổi bật
+## Tính năng nổi bật
 
-- ✅ **Chuẩn hóa:** Tuân thủ tuyệt đối các quy định về thể thức và kỹ thuật trình bày của Nghị định 30.
-- 📋 **Thư viện mẫu đa dạng:** Cung cấp sẵn các mẫu Quyết định, Công văn, Tờ trình, Thông báo... chỉ việc điền nội dung.
-- 📏 **Thông số kỹ thuật chi tiết:** Định nghĩa chính xác khổ giấy, lề, font chữ, cỡ chữ và kiểu chữ cho từng thành phần.
-- 🔠 **Quy tắc viết hoa:** Hệ thống hóa các quy tắc viết hoa trong văn bản hành chính (tên cơ quan, chức vụ, địa danh...).
-- ⚙️ **Kiểm tra tự động:** Script Python đi kèm giúp quét và phát hiện lỗi định dạng trong file `.docx` chỉ trong vài giây.
-- 📝 **Checklist 40+ mục:** Bộ câu hỏi kiểm tra cuối cùng trước khi ký ban hành để đảm bảo không sai sót.
+- **Chuẩn hóa:** Tuân thủ tuyệt đối các quy định về thể thức và kỹ thuật trình bày của Nghị định 30.
+- **Thư viện mẫu đa dạng:** Cung cấp sẵn các mẫu Quyết định, Công văn, Tờ trình, Thông báo... chỉ việc điền nội dung.
+- **Thông số kỹ thuật chi tiết:** Định nghĩa chính xác khổ giấy, lề, font chữ, cỡ chữ và kiểu chữ cho từng thành phần.
+- **Quy tắc viết hoa:** Hệ thống hóa các quy tắc viết hoa trong văn bản hành chính (tên cơ quan, chức vụ, địa danh...).
+- **Kiểm tra tự động:** Script Python đi kèm giúp quét và phát hiện lỗi định dạng trong file `.docx` chỉ trong vài giây.
+- **Checklist 40+ mục:** Bộ câu hỏi kiểm tra cuối cùng trước khi ký ban hành để đảm bảo không sai sót.
 
 ---
 
-## 📂 Cấu trúc dự án
+## Cấu trúc dự án
 
 Bộ công cụ được tổ chức khoa học trong thư mục `.agent/skills/decree-30-formatting/`:
 
@@ -44,7 +44,7 @@ ND30_Skills/
 
 ---
 
-## 🚀 Cách sử dụng
+## Cách sử dụng
 
 ### Dùng với Trợ lý AI (Khuyên dùng)
 
@@ -71,7 +71,7 @@ python scripts/validate_docx.py "duong_dan_file_cua_ban.docx"
 
 ---
 
-## 🎁 Bản quyền & Ủng hộ
+## Bản quyền & Ủng hộ
 
 Dự án này là **HOÀN TOÀN MIỄN PHÍ** dành cho cán bộ, công chức, viên chức và những người làm công tác văn phòng tại Việt Nam.
 
@@ -79,7 +79,7 @@ Dự án này là **HOÀN TOÀN MIỄN PHÍ** dành cho cán bộ, công chức,
 
 ---
 
-## 🤝 Đóng góp
+## Đóng góp
 
 Mọi đóng góp (Pull Request), báo lỗi (Issue) hoặc gợi ý thêm mẫu văn bản mới đều được trân trọng. Hãy cùng nhau xây dựng một cộng đồng làm việc chuyên nghiệp hơn!
 
