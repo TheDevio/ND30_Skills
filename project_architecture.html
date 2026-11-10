@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ND30_Skills - Kiến Trúc Hệ Thống & Bản Đồ Dự Án (Nghị định 30/2020/NĐ-CP)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #faf9f6;
+      --card-bg: #ffffff;
+      --card-sub: #f4f4f5;
+      --text: #18181b;
+      --text-muted: #52525b;
+      --text-dim: #71717a;
+      --border: #e4e4e7;
+      --primary: #18181b;
+      --primary-hover: #27272a;
+      --blue: #2563eb;
+      --blue-sub: #eff6ff;
+      --green: #15803d;
+      --green-sub: #f0fdf4;
+      --amber: #b45309;
+      --amber-sub: #fffbeb;
+      --red: #b91c1c;
+      --red-sub: #fef2f2;
+      --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --radius: 10px;
+      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.06);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 1.5rem 1.5rem 4rem;
+    }
+
+    /* Navigation */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 1.25rem;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .brand-logo {
+      width: 36px;
+      height: 36px;
+      background: var(--primary);
+      color: #fff;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1rem;
+    }
+
+    .brand-title h2 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+    }
+
+    .brand-title p {
+      font-size: 0.78rem;
+      color: var(--text-dim);
+      font-family: var(--font-mono);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.55rem 1.1rem;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: 1px solid var(--border);
+      background: var(--card-bg);
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .btn:hover {
+      background: #f4f4f5;
+      border-color: #d4d4d8;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #ffffff;
+      border-color: var(--primary);
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-hover);
+    }
+
+    /* Intro */
+    .intro-section {
+      margin-bottom: 2rem;
+    }
+
+    .intro-section h1 {
+      font-size: 1.85rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+    }
+
+    .intro-section p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      max-width: 860px;
+    }
+
+    /* Metric Bar */
+    .metrics-bar {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .metric-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.1rem 1.25rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .metric-val {
+      font-size: 1.5rem;
+      font-weight: 800;
+      font-family: var(--font-mono);
+      color: var(--primary);
+    }
+
+    .metric-lbl {
+      font-size: 0.78rem;
+      color: var(--text-dim);
+      margin-top: 0.2rem;
+    }
+
+    /* Tab navigation */
+    .nav-tabs {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 2rem;
+      overflow-x: auto;
+      padding-bottom: 0.5rem;
+    }
+
+    .nav-tab-btn {
+      padding: 0.65rem 1.2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--card-bg);
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .nav-tab-btn:hover {
+      background: #f4f4f5;
+      color: var(--text);
+    }
+
+    .nav-tab-btn.active {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+    }
+
+    /* Card Panels */
+    .panel {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.75rem;
+      box-shadow: var(--shadow-sm);
+      margin-bottom: 1.5rem;
+    }
+
+    .panel-header {
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .panel-header h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+    }
+
+    .panel-header p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 0.2rem;
+    }
+
+    /* Tab 1 Pipeline styling */
+    .pipeline-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .pipeline-card {
+      background: var(--card-sub);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem;
+    }
+
+    .pipeline-step-badge {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      font-family: var(--font-mono);
+      background: #ffffff;
+      border: 1px solid var(--border);
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      margin-bottom: 0.5rem;
+    }
+
+    .pipeline-step-badge.red {
+      background: var(--red-sub);
+      color: var(--red);
+      border-color: #fca5a5;
+    }
+
+    .pipeline-card-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 0.35rem;
+    }
+
+    .pipeline-card-desc {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* Script Engines List */
+    .engines-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+
+    .engine-item {
+      display: flex;
+      gap: 1rem;
+      padding: 1rem;
+      background: var(--card-sub);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      align-items: flex-start;
+    }
+
+    .engine-num {
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+      background: #ffffff;
+      border: 1px solid var(--border);
+      font-weight: 700;
+      font-family: var(--font-mono);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.82rem;
+      flex-shrink: 0;
+    }
+
+    .engine-body h4 {
+      font-size: 0.92rem;
+      font-weight: 700;
+      margin-bottom: 0.2rem;
+    }
+
+    .engine-body p {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    /* TAB 2: A4 Interactive Workspace */
+    .a4-workspace {
+      display: grid;
+      grid-template-columns: 1fr 360px;
+      gap: 1.5rem;
+      align-items: start;
+    }
+
+    @media (max-width: 980px) {
+      .a4-workspace {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .a4-sheet-container {
+      background: #ececec;
+      padding: 2rem;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      display: flex;
+      justify-content: center;
+    }
+
+    .a4-sheet {
+      width: 100%;
+      max-width: 580px;
+      background: #ffffff;
+      color: #000000;
+      border: 1px solid #d4d4d8;
+      box-shadow: var(--shadow-md);
+      padding: 2.2rem 2.2rem 2.2rem 3rem;
+      font-family: 'Times New Roman', serif;
+      font-size: 11px;
+      line-height: 1.35;
+      position: relative;
+    }
+
+    .a4-tag {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 9px;
+      font-weight: bold;
+      background: #e4e4e7;
+      color: #18181b;
+      padding: 1px 4px;
+      border-radius: 3px;
+      margin-right: 4px;
+      vertical-align: middle;
+      cursor: pointer;
+    }
+
+    .a4-tag:hover, .a4-tag.active {
+      background: #18181b;
+      color: #ffffff;
+    }
+
+    .interactive-element {
+      padding: 2px 4px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+
+    .interactive-element:hover {
+      background-color: #fef08a;
+    }
+
+    /* Inspector Cards for Tab 2 */
+    .spec-sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      max-height: 750px;
+      overflow-y: auto;
+      padding-right: 0.5rem;
+    }
+
+    .spec-card {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.85rem 1rem;
+      cursor: pointer;
+      font-size: 0.82rem;
+    }
+
+    .spec-card:hover, .spec-card.active {
+      border-color: var(--primary);
+      background: #fafafa;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .spec-card-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.35rem;
+      font-weight: 700;
+    }
+
+    .spec-card-body {
+      color: var(--text-muted);
+      line-height: 1.45;
+    }
+
+    /* Table Matrix */
+    table.data-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+      text-align: left;
+    }
+
+    table.data-table th, 
+    table.data-table td {
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    table.data-table th {
+      background: var(--card-sub);
+      color: var(--text-muted);
+      font-weight: 700;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    table.data-table tr:hover td {
+      background: #fafafa;
+    }
+
+    .badge-pill {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-family: var(--font-mono);
+      font-weight: 600;
+      padding: 0.15rem 0.5rem;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+      background: #ffffff;
+    }
+
+    .badge-pill.danger {
+      background: var(--red-sub);
+      color: var(--red);
+      border-color: #fca5a5;
+    }
+
+    .badge-pill.green {
+      background: var(--green-sub);
+      color: var(--green);
+      border-color: #bbf7d0;
+    }
+
+    /* File Tree */
+    .file-tree {
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      line-height: 1.8;
+      background: var(--card-sub);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.25rem 1.5rem;
+    }
+
+    .tree-folder {
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .tree-file {
+      padding-left: 1.5rem;
+      color: var(--text-muted);
+    }
+
+    .tree-desc {
+      color: var(--text-dim);
+      font-size: 0.75rem;
+      margin-left: 0.5rem;
+    }
+
+    /* Footer */
+    footer {
+      margin-top: 3.5rem;
+      border-top: 1px solid var(--border);
+      padding-top: 1.5rem;
+      font-size: 0.82rem;
+      color: var(--text-dim);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation -->
+  <nav>
+    <div class="brand-group">
+      <div class="brand-logo">NĐ</div>
+      <div class="brand-title">
+        <h2>ND30_Skills: Bản Đồ Kiến Trúc Hệ Thống</h2>
+        <p>Quy chuẩn hóa toàn diện theo Nghị định 30/2020/NĐ-CP của Chính phủ • <strong>by The Devio</strong></p>
+      </div>
+    </div>
+    <div style="display: flex; gap: 0.5rem;">
+      <a href="skills_workflow.html" class="btn">
+        Sơ đồ luồng hoạt động
+      </a>
+    </div>
+  </nav>
+
+  <!-- Intro Header -->
+  <section class="intro-section">
+    <h1>Kiến Trúc Kỹ Thuật & Bản Đồ Quy Chuẩn</h1>
+    <p>
+      Hệ thống tích hợp toàn diện giữa quy chuẩn pháp luật hành chính (Nghị định 30/2020/NĐ-CP), hạt nhân xử lý tệp Word bằng mã Python thuần túy và cỗ máy tự động thẩm định thể thức với nguyên tắc an toàn số 1: Bảo toàn nguyên vẹn 100% file gốc của người dùng.
+    </p>
+  </section>
+
+  <!-- Metrics Bar -->
+  <div class="metrics-bar">
+    <div class="metric-card">
+      <div class="metric-val">100%</div>
+      <div class="metric-lbl">Thẩm định thể thức tự động</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-val">0</div>
+      <div class="metric-lbl">Không bao giờ ghi đè file gốc</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-val">15</div>
+      <div class="metric-lbl">Mẫu biểu chuẩn Phụ lục III</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-val">0%</div>
+      <div class="metric-lbl">Khử sạch lỗi Em-dash (—) của AI</div>
+    </div>
+  </div>
+
+  <!-- Tab Bar -->
+  <div class="nav-tabs">
+    <button class="nav-tab-btn active" id="tabBtn1" onclick="switchTab(1)">1. Kiến Trúc & Luồng Xử Lý</button>
+    <button class="nav-tab-btn" id="tabBtn2" onclick="switchTab(2)">2. Mô Phỏng Trang A4 Chuẩn</button>
+    <button class="nav-tab-btn" id="tabBtn3" onclick="switchTab(3)">3. Ma Trận Thẩm Định Thể Thức</button>
+    <button class="nav-tab-btn" id="tabBtn4" onclick="switchTab(4)">4. 6 Nguyên Tắc Cốt Lõi</button>
+    <button class="nav-tab-btn" id="tabBtn5" onclick="switchTab(5)">5. Cấu Trúc Thư Mục Dự Án</button>
+  </div>
+
+  <!-- TAB 1: KIẾN TRÚC & LUỒNG XỬ LÝ -->
+  <div id="tabContent1">
+    
+    <div class="panel">
+      <div class="panel-header">
+        <h3>Quy Trình 6 Bước Khép Kín (Self-Verification Pipeline)</h3>
+        <p>Quy trình tự động hóa khép kín từ lúc nhận file tới khi bản sao đạt 100% chuẩn thể thức</p>
+      </div>
+
+      <div class="pipeline-grid">
+        <div class="pipeline-card">
+          <span class="pipeline-step-badge">Bước 1</span>
+          <div class="pipeline-card-title">Tiếp Nhận & Phân Loại</div>
+          <div class="pipeline-card-desc">
+            Nhận diện loại văn bản từ prompt hoặc file (.docx, .pdf). Đối chiếu 29 tên loại theo Phụ lục III. Phân biệt Quyết định trực tiếp (Mẫu 1.2) vs gián tiếp kèm quy chế (Mẫu 1.3).
+          </div>
+        </div>
+
+        <div class="pipeline-card">
+          <span class="pipeline-step-badge red">Bước 2 - Khóa An Toàn</span>
+          <div class="pipeline-card-title">Bảo Vệ File Gốc Tuyệt Đối</div>
+          <div class="pipeline-card-desc">
+            Không chỉnh sửa hay ghi đè file của người dùng. Tự động sinh bản sao độc lập: <code>[tên_file]_chuan_ND30.docx</code> để thực hiện toàn bộ việc chuẩn hóa.
+          </div>
+        </div>
+
+        <div class="pipeline-card">
+          <span class="pipeline-step-badge">Bước 3</span>
+          <div class="pipeline-card-title">Dựng Khung Bằng Mã Python</div>
+          <div class="pipeline-card-desc">
+            <code>builder_docx.py</code> tạo bảng 2 cột ẩn viền không lệch lề, đặt lề trang A4 chuẩn (20-25-15-20 mm), khử sạch Em-dash thành phím gạch nối ngắn <code>-</code> (ASCII 45).
+          </div>
+        </div>
+
+        <div class="pipeline-card">
+          <span class="pipeline-step-badge red">Bước 4 - Chốt Chặn</span>
+          <div class="pipeline-card-title">Bộ Thẩm Định Tự Động</div>
+          <div class="pipeline-card-desc">
+            <code>validate_docx.py</code> quét toàn diện 40+ tiêu chí. Nhận diện đủ 5 thẩm quyền ký: <code>TM.</code>, <code>Q.</code>, <code>KT.</code>, <code>TL.</code>, <code>TUQ.</code>. Kiểm tra quy tắc số 0 ngày/tháng.
+          </div>
+        </div>
+
+        <div class="pipeline-card">
+          <span class="pipeline-step-badge">Bước 5</span>
+          <div class="pipeline-card-title">Vòng Lặp Tự Sửa Lỗi</div>
+          <div class="pipeline-card-desc">
+            Cơ chế Self-Healing: Nếu máy quét phát hiện bất kỳ lỗi thể thức nào (FAIL), hệ thống tự kích hoạt hàm sửa trên mã và quét lại cho đến khi đạt 100% PASS.
+          </div>
+        </div>
+
+        <div class="pipeline-card">
+          <span class="pipeline-step-badge">Bước 6</span>
+          <div class="pipeline-card-title">Bàn Giao & Báo Chỗ Trống</div>
+          <div class="pipeline-card-desc">
+            Gửi file hoàn thiện kèm báo cáo thẩm định và danh sách các trường placeholder <code>[...]</code> (Zero Hallucination) để người dùng bổ sung trước khi ký ban hành.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-header">
+        <h3>Hạt Nhân Kỹ Thuật (4 Script Engines Chuyên Dụng)</h3>
+        <p>4 module Python độc lập, tối ưu hóa xử lý OOXML và tương thích môi trường Windows</p>
+      </div>
+
+      <div class="engines-list">
+        <div class="engine-item">
+          <div class="engine-num">1</div>
+          <div class="engine-body">
+            <h4><code>constants.py</code> - Nguồn Chân Lý Duy Nhất (Single Source of Truth)</h4>
+            <p>Tập trung toàn bộ hằng số khổ A4 (210×297 mm), lề trang (20-25-15-20 mm), font Times New Roman, dải cỡ chữ từ 12 đến 14, danh sách 5 quyền hạn ký và thuật toán <code>sanitize_dashes()</code>.</p>
+          </div>
+        </div>
+
+        <div class="engine-item">
+          <div class="engine-num">2</div>
+          <div class="engine-body">
+            <h4><code>builder_docx.py</code> - Bộ Dựng Layout Bằng Mã Python</h4>
+            <p>Tạo bảng 2 ô ẩn viền không lệch lề, kẻ đường nét liền tiêu ngữ 100%, đường kẻ tên cơ quan và trích yếu 1/3 đến 1/2, căn justified đều hai bên và thụt lề đầu dòng chuẩn 1.27 cm.</p>
+          </div>
+        </div>
+
+        <div class="engine-item">
+          <div class="engine-num">3</div>
+          <div class="engine-body">
+            <h4><code>validate_docx.py</code> - Bộ Thẩm Định Thể Thức Tự Động</h4>
+            <p>Đọc trực tiếp cấu trúc XML paragraphs, tables và sections của tệp Word. Hỗ trợ cờ <code>--json</code> để xuất báo cáo kiểm định máy và tích hợp vào quy trình CI/CD tự động.</p>
+          </div>
+        </div>
+
+        <div class="engine-item">
+          <div class="engine-num">4</div>
+          <div class="engine-body">
+            <h4><code>pdf_to_docx.py</code> - Bộ Số Hóa Văn Bản Từ PDF Scan</h4>
+            <p>Bóc tách logic hành chính từ file PDF scan có chữ ký số và tái sinh thành file Word sạch chuẩn 100%, không bị vỡ vụn bảng hay dính các hộp thoại text-box rườm rà.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- TAB 2: MÔ PHỎNG TRANG A4 CHUẨN (INTERACTIVE INSPECTOR) -->
+  <div id="tabContent2" style="display: none;">
+    <div class="panel">
+      <div class="panel-header">
+        <h3>Mô Phỏng Trang A4 Chuẩn Thể Thức (Nghị định 30/2020/NĐ-CP)</h3>
+        <p>Bấm vào từng thành phần trên trang A4 hoặc danh sách bên phải để xem chi tiết quy cách</p>
+      </div>
+
+      <div class="a4-workspace">
+        
+        <!-- Sheet Preview -->
+        <div class="a4-sheet-container">
+          <div class="a4-sheet">
+
+            <!-- Quốc hiệu & Cơ quan -->
+            <table style="width: 100%; border-collapse: collapse; border: none; margin-bottom: 1.5rem;">
+              <tr style="border: none;">
+                <td style="width: 48%; text-align: center; vertical-align: top; border: none; padding: 0;">
+                  <div class="interactive-element" onclick="highlightSpec('cq')">
+                    <span class="a4-tag">2</span>ỦY BAN NHÂN DÂN TỈNH [...]<br>
+                    <strong>SỞ NỘI VỤ</strong>
+                    <div style="width: 40%; margin: 3px auto; border-bottom: 1px solid #000;"></div>
+                  </div>
+                  <div class="interactive-element" onclick="highlightSpec('skh')" style="margin-top: 4px;">
+                    <span class="a4-tag">3</span>Số: [...]/QĐ-SNV
+                  </div>
+                </td>
+                <td style="width: 52%; text-align: center; vertical-align: top; border: none; padding: 0;">
+                  <div class="interactive-element" onclick="highlightSpec('qh')">
+                    <span class="a4-tag">1</span><strong>CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM</strong><br>
+                    <strong>Độc lập - Tự do - Hạnh phúc</strong>
+                    <div style="width: 100%; margin: 3px auto; border-bottom: 1px solid #000;"></div>
+                  </div>
+                  <div class="interactive-element" onclick="highlightSpec('ddnt')" style="margin-top: 4px;">
+                    <span class="a4-tag">4</span><em>Thành phố Hồ Chí Minh, ngày 05 tháng 01 năm 2026</em>
+                  </div>
+                </td>
+              </tr>
+            </table>
+
+            <!-- Tiêu đề & Trích yếu -->
+            <div class="interactive-element" onclick="highlightSpec('title')" style="text-align: center; margin: 1.5rem 0 1rem;">
+              <span class="a4-tag">5</span><strong style="font-size: 14px;">QUYẾT ĐỊNH</strong><br>
+              <strong style="font-size: 12px;">Về việc ban hành kế hoạch cải cách hành chính năm 20[...]</strong>
+              <div style="width: 35%; margin: 4px auto 14px; border-bottom: 1px solid #000;"></div>
+            </div>
+
+            <!-- Căn cứ & Nội dung -->
+            <div class="interactive-element" onclick="highlightSpec('content')">
+              <span class="a4-tag">6</span>
+              <div style="text-align: center; font-weight: bold; margin-bottom: 8px;">GIÁM ĐỐC SỞ NỘI VỤ</div>
+              <div style="font-style: italic; text-align: justify; text-indent: 1.27cm; margin-bottom: 8px;">
+                Căn cứ Nghị định số 30/2020/NĐ-CP ngày 05 tháng 3 năm 2020 của Chính phủ về công tác văn thư;<br>
+                Theo đề nghị của Trưởng phòng Tổ chức cán bộ.
+              </div>
+              <div style="text-align: center; font-weight: bold; margin-bottom: 8px;">QUYẾT ĐỊNH:</div>
+              <div style="text-align: justify; text-indent: 1.27cm; margin-bottom: 6px;">
+                <strong>Điều 1.</strong> Ban hành kèm theo Quyết định này Kế hoạch cải cách hành chính năm 20[...] của Sở Nội vụ.
+              </div>
+              <div style="text-align: justify; text-indent: 1.27cm; margin-bottom: 1.5rem;">
+                <strong>Điều 2.</strong> Quyết định này có hiệu lực kể từ ngày ký. Chánh Văn phòng, Trưởng các phòng chuyên môn chịu trách nhiệm thi hành Quyết định này./.
+              </div>
+            </div>
+
+            <!-- Nơi nhận & Chữ ký -->
+            <table style="width: 100%; border-collapse: collapse; border: none;">
+              <tr style="border: none;">
+                <td style="width: 50%; vertical-align: top; border: none; padding: 0;">
+                  <div class="interactive-element" onclick="highlightSpec('nn')">
+                    <span class="a4-tag">8</span><em><strong>Nơi nhận:</strong></em><br>
+                    <div style="font-size: 10px; line-height: 1.4; margin-top: 2px;">
+                      - Như Điều 2;<br>
+                      - UBND tỉnh (để b/c);<br>
+                      - Giám đốc, các PGĐ;<br>
+                      - Lưu: VT, TCCB.
+                    </div>
+                  </div>
+                </td>
+                <td style="width: 50%; text-align: center; vertical-align: top; border: none; padding: 0;">
+                  <div class="interactive-element" onclick="highlightSpec('sign')">
+                    <span class="a4-tag">7</span><strong>GIÁM ĐỐC</strong><br>
+                    <div style="height: 40px;"></div>
+                    <strong>[...]</strong>
+                  </div>
+                </td>
+              </tr>
+            </table>
+
+          </div>
+        </div>
+
+        <!-- Spec Cards Sidebar -->
+        <div class="spec-sidebar">
+          
+          <div class="spec-card active" id="spec-qh" onclick="highlightSpec('qh')">
+            <div class="spec-card-head">
+              <span>(1) Quốc Hiệu & Tiêu Ngữ</span>
+              <span class="badge-pill">Mục I PL I</span>
+            </div>
+            <div class="spec-card-body">
+              Quốc hiệu in hoa, đậm 12-13pt. Tiêu ngữ in thường, đậm 13-14pt. Đường kẻ nét liền dưới Tiêu ngữ có độ dài <strong>bằng 100% độ dài dòng chữ</strong>.
+            </div>
+          </div>
+
+          <div class="spec-card" id="spec-cq" onclick="highlightSpec('cq')">
+            <div class="spec-card-head">
+              <span>(2) Tên Cơ Quan Ban Hành</span>
+              <span class="badge-pill">Mục II PL I</span>
+            </div>
+            <div class="spec-card-body">
+              Cơ quan chủ quản in thường 12-13pt; Cơ quan ban hành in hoa, đậm 12-13pt. Đường kẻ dưới tên cơ quan dài từ <strong>1/3 đến 1/2 độ dài dòng chữ</strong>.
+            </div>
+          </div>
+
+          <div class="spec-card" id="spec-skh" onclick="highlightSpec('skh')">
+            <div class="spec-card-head">
+              <span>(3) Số & Ký Hiệu Văn Bản</span>
+              <span class="badge-pill">Mục III PL I</span>
+            </div>
+            <div class="spec-card-body">
+              Từ "Số:" in thường, cỡ 13pt. Ký hiệu in hoa, cỡ 13pt, gạch nối ngắn <code>-</code> (ASCII 45) viết liền không dấu cách (ví dụ: <code>Số: 15/QĐ-UBND</code>).
+            </div>
+          </div>
+
+          <div class="spec-card" id="spec-ddnt" onclick="highlightSpec('ddnt')">
+            <div class="spec-card-head">
+              <span>(4) Địa Danh & Ngày Tháng</span>
+              <span class="badge-pill danger">Quy tắc số 0</span>
+            </div>
+            <div class="spec-card-body">
+              In nghiêng, cỡ 13-14pt. <strong>Quy tắc số 0:</strong> Ngày &lt; 10 và Tháng 1, Tháng 2 bắt buộc ghi thêm số 0 phía trước (<code>ngày 05</code>, <code>tháng 01</code>). Tháng 3 đến 12 không ghi số 0 (<code>tháng 3</code>, <code>tháng 12</code>).
+            </div>
+          </div>
+
+          <div class="spec-card" id="spec-title" onclick="highlightSpec('title')">
+            <div class="spec-card-head">
+              <span>(5) Tên Loại & Trích Yếu</span>
+              <span class="badge-pill">Mục V PL I</span>
+            </div>
+            <div class="spec-card-body">
+              Tên loại in hoa, đậm 14pt (QUYẾT ĐỊNH). Trích yếu in thường, đậm 13-14pt. Đường kẻ dưới trích yếu dài từ 1/3 đến 1/2 dòng chữ, căn giữa.
+            </div>
+          </div>
+
+          <div class="spec-card" id="spec-content" onclick="highlightSpec('content')">
+            <div class="spec-card-head">
+              <span>(6) Căn Cứ & Nội Dung</span>
+              <span class="badge-pill">Mục VI PL I</span>
+            </div>
+            <div class="spec-card-body">
+              Căn cứ in nghiêng 13-14pt, kết thúc bằng dấu <code>;</code>. Thụt đầu dòng đoạn văn 1.27 cm. Căn đều hai bên (Justified). Dấu kết thúc văn bản: <code>./.</code> hoặc <code>./</code>.
+            </div>
+          </div>
+
+          <div class="spec-card" id="spec-sign" onclick="highlightSpec('sign')">
+            <div class="spec-card-head">
+              <span>(7) Chức Vụ & Người Ký</span>
+              <span class="badge-pill">5 Quyền hạn</span>
+            </div>
+            <div class="spec-card-body">
+              Chỉ dùng 5 quyền hạn: <code>TM.</code>, <code>Q.</code>, <code>KT.</code>, <code>TL.</code>, <code>TUQ.</code>. Chức vụ in hoa, đậm 13-14pt. Họ tên in thường, đậm 13-14pt. Tuyệt đối không ghi học hàm/học vị (GS., TS.).
+            </div>
+          </div>
+
+          <div class="spec-card" id="spec-nn" onclick="highlightSpec('nn')">
+            <div class="spec-card-head">
+              <span>(8) Mục Nơi Nhận</span>
+              <span class="badge-pill">Mục VIII PL I</span>
+            </div>
+            <div class="spec-card-body">
+              Từ "Nơi nhận:" in nghiêng, đậm 12pt. Danh sách nơi nhận in thường 11pt, đầu dòng bắt đầu bằng gạch nối ngắn <code>- </code> (có 1 khoảng trắng). Dòng cuối kết thúc bằng dấu chấm <code>.</code>.
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB 3: MA TRẬN THẨM ĐỊNH THỂ THỨC -->
+  <div id="tabContent3" style="display: none;">
+    <div class="panel">
+      <div class="panel-header">
+        <h3>Ma Trận 40+ Tiêu Chí Thẩm Định Thể Thức (validate_docx.py)</h3>
+        <p>Bảng kiểm chuẩn hóa tự động quét trực tiếp vào cấu trúc OOXML của tệp Word</p>
+      </div>
+
+      <div style="overflow-x: auto;">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Nhóm Quy Chuẩn</th>
+              <th>Tiêu Chí Kỹ Thuật</th>
+              <th>Yêu Cầu Chuẩn NĐ 30</th>
+              <th>Mức Độ Xử Lý</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Khổ giấy & Căn lề</strong></td>
+              <td>Khổ A4 (210 x 297 mm)</td>
+              <td>Trên: 20-25mm, Dưới: 20-25mm, Trái: 30-35mm, Phải: 15-20mm</td>
+              <td><span class="badge-pill danger">Bắt buộc</span></td>
+            </tr>
+            <tr>
+              <td><strong>Phông chữ & Bảng mã</strong></td>
+              <td>Times New Roman Unicode</td>
+              <td>100% nội dung sử dụng Times New Roman, bộ mã TCVN 6909:2001</td>
+              <td><span class="badge-pill danger">Bắt buộc</span></td>
+            </tr>
+            <tr>
+              <td><strong>Dấu gạch nối ngắn</strong></td>
+              <td>ASCII 45 (Phím '-')</td>
+              <td>Triệt tiêu hoàn toàn Em-dash '—' và En-dash '–'. Dùng '-' cho Tiêu ngữ và Số/KH</td>
+              <td><span class="badge-pill danger">Bắt buộc</span></td>
+            </tr>
+            <tr>
+              <td><strong>Quy tắc số 0 Ngày/Tháng</strong></td>
+              <td>Điểm b Khoản 4 Mục II PL I</td>
+              <td>Ngày &lt; 10 và Tháng 1, 2 có số 0 (ngày 05, tháng 01); Tháng 3-12 không ghi số 0</td>
+              <td><span class="badge-pill danger">Bắt buộc</span></td>
+            </tr>
+            <tr>
+              <td><strong>Bảng 2 cột ẩn viền</strong></td>
+              <td>Căn lề Quốc hiệu / Nơi nhận</td>
+              <td>Sử dụng bảng 2 ô viền ẩn (0pt border) để chống xô lệch dòng văn bản</td>
+              <td><span class="badge-pill green">Chuẩn hóa</span></td>
+            </tr>
+            <tr>
+              <td><strong>Tỷ lệ đường kẻ ngang</strong></td>
+              <td>Đường nét liền</td>
+              <td>Tiêu ngữ bằng 100% dòng chữ; Tên CQ và Trích yếu bằng 1/3 đến 1/2 dòng chữ</td>
+              <td><span class="badge-pill green">Chuẩn hóa</span></td>
+            </tr>
+            <tr>
+              <td><strong>Thẩm quyền người ký</strong></td>
+              <td>5 Chữ viết tắt hợp lệ</td>
+              <td>Đúng 5 trường hợp: TM., Q., KT., TL., TUQ. Cấm ghi học hàm/học vị</td>
+              <td><span class="badge-pill danger">Bắt buộc</span></td>
+            </tr>
+            <tr>
+              <td><strong>Số trang văn bản</strong></td>
+              <td>Header Center</td>
+              <td>Đánh số ở chính giữa lề trên, font đứng 13-14pt. Không đánh số trang thứ nhất</td>
+              <td><span class="badge-pill green">Chuẩn hóa</span></td>
+            </tr>
+            <tr>
+              <td><strong>Dấu kết thúc văn bản</strong></td>
+              <td>Ký hiệu chân văn bản</td>
+              <td>Kết thúc bằng ./. hoặc ./ ở cuối dòng điều khoản cuối cùng</td>
+              <td><span class="badge-pill green">Chuẩn hóa</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB 4: 6 NGUYÊN TẮC CỐT LÕI -->
+  <div id="tabContent4" style="display: none;">
+    <div class="panel">
+      <div class="panel-header">
+        <h3>6 Nguyên Tắc Vận Hành Bất Di Bất Dịch Của ND30_Skills</h3>
+        <p>Hệ thống quy tắc nghiêm ngặt bảo đảm an toàn dữ liệu và loại bỏ hoàn toàn tính cảm tính của AI</p>
+      </div>
+
+      <div class="engines-list">
+        <div class="engine-item" style="border-left: 3px solid var(--red); background: var(--red-sub);">
+          <div class="engine-num" style="color: var(--red); border-color: #fca5a5;">1</div>
+          <div class="engine-body">
+            <h4 style="color: var(--red);">Bảo Toàn File Gốc Tuyệt Đối (Tiên Quyết)</h4>
+            <p style="color: #7f1d1d;">Khi người dùng gửi file Word để rà soát hoặc sửa chữa, tuyệt đối không chỉnh sửa hoặc ghi đè trực tiếp lên file đó. Mọi thay đổi bắt buộc lưu vào bản sao mới có hậu tố: <code>[tên_file_gốc]_chuan_ND30.docx</code>.</p>
+          </div>
+        </div>
+
+        <div class="engine-item">
+          <div class="engine-num">2</div>
+          <div class="engine-body">
+            <h4>Thể Thức Do Mã, Không Do Model</h4>
+            <p>Mọi thông số căn lề, độ rộng cột, font chữ, đường kẻ được thiết lập chính xác qua mã Python (python-docx). Không để LLM tự vẽ hay phỏng đoán layout bằng cảm tính.</p>
+          </div>
+        </div>
+
+        <div class="engine-item">
+          <div class="engine-num">3</div>
+          <div class="engine-body">
+            <h4>Không Giao File Chưa Đạt (Quality Gate)</h4>
+            <p>Sau khi dựng xong, file bắt buộc phải đi qua bộ thẩm định thể thức tự động (<code>validate_docx.py</code>). Nếu chưa đạt 100% chuẩn quy định, AI phải tự chỉnh sửa và kiểm tra lại. Quyết không bàn giao file khi còn lỗi thể thức.</p>
+          </div>
+        </div>
+
+        <div class="engine-item">
+          <div class="engine-num">4</div>
+          <div class="engine-body">
+            <h4>Không Tự Bịa (Zero Hallucination)</h4>
+            <p>Số hiệu văn bản, ngày ban hành hoặc tên lãnh đạo ký nếu chưa được cung cấp thì giữ nguyên dạng placeholder chuẩn <code>[...]</code> (ví dụ: <code>Số: [...]/QĐ-...</code>, <code>người ký [...]</code>) và liệt kê rõ cho người dùng điền sau.</p>
+          </div>
+        </div>
+
+        <div class="engine-item">
+          <div class="engine-num">5</div>
+          <div class="engine-body">
+            <h4>Hỏi Gom Một Lần (Batch Clarification)</h4>
+            <p>Quét toàn bộ các thông tin cần thiết và hỏi người dùng tập trung trong 1 lượt duy nhất, tránh hỏi nhỏ giọt nhiều lần làm gián đoạn công việc.</p>
+          </div>
+        </div>
+
+        <div class="engine-item">
+          <div class="engine-num">6</div>
+          <div class="engine-body">
+            <h4>Chuẩn Hóa Dấu Gạch Nối (Khắc Phục Lỗi Đặc Trưng Của AI)</h4>
+            <p>Triệt tiêu hoàn toàn thói quen dùng dấu gạch ngang dài Em-dash '—' hoặc En-dash '–' của AI. Bắt buộc dùng dấu gạch nối ngắn '-' (ASCII 45) cho Tiêu ngữ, Số hiệu và gạch đầu dòng.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB 5: CẤU TRÚC THƯ MỤC DỰ ÁN -->
+  <div id="tabContent5" style="display: none;">
+    <div class="panel">
+      <div class="panel-header">
+        <h3>Cấu Trúc Tệp Tin Dự Án (Project File Tree)</h3>
+        <p>Bộ kỹ năng tinh gọn, chuẩn hóa theo cấu trúc Antigravity Agent Skill</p>
+      </div>
+
+      <div class="file-tree">
+        <div class="tree-folder">ND30_Skills_v2/</div>
+        <div class="tree-file">README.md <span class="tree-desc">- Tài liệu dự án toàn diện (by The Devio)</span></div>
+        <div class="tree-file">LICENSE <span class="tree-desc">- Giấy phép phần mềm mã nguồn mở MIT</span></div>
+        <div class="tree-file">30.signed.pdf <span class="tree-desc">- File scan ký số gốc Nghị định 30/2020/NĐ-CP (76 trang)</span></div>
+        <div class="tree-file">project_architecture.html <span class="tree-desc">- Trang kiến trúc toàn diện & bản đồ quy chuẩn (by The Devio)</span></div>
+        <div class="tree-file">skills_workflow.html <span class="tree-desc">- Sơ đồ luồng hoạt động & mô phỏng luồng thực thi (by The Devio)</span></div>
+        
+        <div class="tree-folder" style="padding-left: 1.5rem; margin-top: 6px;">.agent/skills/ND30_Skills/</div>
+        <div class="tree-file" style="padding-left: 3rem;">SKILL.md <span class="tree-desc">- Hạt nhân vận hành & quy trình 6 bước</span></div>
+        <div class="tree-file" style="padding-left: 3rem;">01-thong-so-ky-thuat.md <span class="tree-desc">- Khổ A4, lề trang, font chữ, chữ ký số (Phụ lục I)</span></div>
+        <div class="tree-file" style="padding-left: 3rem;">02-bang-mau-chu.md <span class="tree-desc">- Quy chuẩn 14 thành phần thể thức theo Mục V Phụ lục I, 5 quyền hạn ký</span></div>
+        <div class="tree-file" style="padding-left: 3rem;">03-so-do-bo-cuc.md <span class="tree-desc">- Sơ đồ 14 ô vị trí thể thức & 7 ô bản sao giấy dưới đường kẻ ngang</span></div>
+        <div class="tree-file" style="padding-left: 3rem;">04-quy-tac-viet-hoa.md <span class="tree-desc">- Quy chuẩn viết hoa văn bản hành chính (Phụ lục II)</span></div>
+        <div class="tree-file" style="padding-left: 3rem;">05-mau-van-ban.md <span class="tree-desc">- 29 chữ viết tắt (Quy định là QyĐ) & 15 mẫu biểu Phụ lục III (1.1-1.10, 2.1-2.2, 3.1-3.2)</span></div>
+        <div class="tree-file" style="padding-left: 3rem;">06-ban-sao.md <span class="tree-desc">- Thể thức sao y, sao lục, trích sao (giấy & điện tử)</span></div>
+        <div class="tree-file" style="padding-left: 3rem;">07-checklist.md <span class="tree-desc">- Bảng kiểm tra 40+ tiêu chí rà soát trước khi ký</span></div>
+        <div class="tree-file" style="padding-left: 3rem;">08-quan-ly-van-ban.md <span class="tree-desc">- 8 Mẫu sổ sách văn thư, bì thư, dấu ĐẾN 35x50mm có dòng Số và KH hồ sơ (Phụ lục IV)</span></div>
+        <div class="tree-file" style="padding-left: 3rem;">09-lap-ho-so-luu-tru.md <span class="tree-desc">- Nghiệp vụ lập và nộp lưu hồ sơ (Phụ lục V)</span></div>
+        <div class="tree-file" style="padding-left: 3rem;">10-tai-lieu-dien-tu-metadata.md <span class="tree-desc">- 3 Bảng Metadata đặc tả kỹ thuật (Phụ lục VI)</span></div>
+        
+        <div class="tree-folder" style="padding-left: 3rem; margin-top: 6px;">scripts/</div>
+        <div class="tree-file" style="padding-left: 4.5rem;">constants.py <span class="tree-desc">- Hằng số A4, lề, font, dải cỡ chữ, regex kiểm tra</span></div>
+        <div class="tree-file" style="padding-left: 4.5rem;">builder_docx.py <span class="tree-desc">- Bộ tạo file Word chuẩn bằng mã Python</span></div>
+        <div class="tree-file" style="padding-left: 4.5rem;">validate_docx.py <span class="tree-desc">- Bộ thẩm định thể thức tự động chuyên sâu</span></div>
+        <div class="tree-file" style="padding-left: 4.5rem;">pdf_to_docx.py <span class="tree-desc">- Bộ số hóa văn bản từ file PDF scan</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div>ND30_Skills v2.2 - Chuẩn hóa Nghị định số 30/2020/NĐ-CP của Chính phủ • <strong>by The Devio</strong></div>
+    <div>Bộ công cụ hỗ trợ soạn thảo & thẩm định thể thức văn bản hành chính Việt Nam</div>
+  </footer>
+
+  <script>
+    function switchTab(tabNum) {
+      for (let i = 1; i <= 5; i++) {
+        const content = document.getElementById(`tabContent${i}`);
+        const btn = document.getElementById(`tabBtn${i}`);
+        if (content && btn) {
+          if (i === tabNum) {
+            content.style.display = 'block';
+            btn.classList.add('active');
+          } else {
+            content.style.display = 'none';
+            btn.classList.remove('active');
+          }
+        }
+      }
+    }
+
+    function highlightSpec(key) {
+      const cards = document.querySelectorAll('.spec-card');
+      cards.forEach(c => c.classList.remove('active'));
+
+      const targetCard = document.getElementById(`spec-${key}`);
+      if (targetCard) {
+        targetCard.classList.add('active');
+        targetCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+    }
+  </script>
+</body>
+</html>
