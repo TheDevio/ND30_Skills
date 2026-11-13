@@ -178,8 +178,18 @@ python .agent/skills/ND30_Skills/scripts/builder_docx.py "Quyet_dinh_moi.docx"
 
 ---
 
-## ⚖️ Bản quyền & Tác giả
+## 🎁 Bản quyền & Ủng hộ
 
-Dự án được phát hành theo giấy phép mã nguồn mở **MIT License**.
+Dự án này là **HOÀN TOÀN MIỄN PHÍ VÀ MÃ NGUỒN MỞ (MIT)** dành cho cán bộ, công chức, viên chức và tất cả những ai làm công tác văn phòng tại Việt Nam.
 
-Thiết kế và phát triển bởi **The Devio** - Vì mục tiêu hiện đại hóa và chuẩn hóa nền hành chính Việt Nam.
+🌟 **Nếu bạn thấy dự án hữu ích, hãy tặng 1 Star ⭐ trên GitHub nhé!** Đây là nguồn động viên quý giá để tiếp tục hoàn thiện và cập nhật thêm nhiều tiện ích mới.
+
+---
+
+## 🤝 Đóng góp
+
+Mọi đóng góp (Pull Request), báo lỗi (Issue) hoặc gợi ý thêm mẫu văn bản mới đều được trân trọng. Hãy cùng nhau xây dựng môi trường làm việc hành chính chuẩn mực, hiện đại và hiệu quả!
+
+---
+
+_Phát triển bởi Dung "Devio" Le Quoc ❤️ - Vì mục tiêu hiện đại hóa và chuẩn hóa nền hành chính Việt Nam._
