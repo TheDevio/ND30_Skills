@@ -35,7 +35,7 @@
 - **Bộ thẩm định thể thức tự động (`validate_docx.py`):** Quét sâu cấu trúc file Word (paragraphs, tables, runs, header/footer và XML lõi), tự động phát hiện 40+ lỗi thể thức và hỗ trợ xuất báo cáo JSON.
 - **Bộ số hóa văn bản từ PDF (`pdf_to_docx.py`):** Bóc tách ngữ nghĩa từ file PDF scan hoặc ký số và tái sinh thành bản thảo Word sạch 100%, không sử dụng text-box chắp vá hay làm vỡ layout.
 - **Giao diện trực quan hóa toàn diện (by The Devio):**
-  - [**project_architecture.html**](project_architecture.html): Bản đồ kiến trúc hệ thống và mô phỏng trang A4 tương tác liên kết bảng thông số kỹ thuật.
+  - [**index.html**](index.html): Bản đồ kiến trúc hệ thống và mô phỏng trang A4 tương tác liên kết bảng thông số kỹ thuật.
   - [**skills_workflow.html**](skills_workflow.html): Sơ đồ luồng hoạt động 6 bước khép kín, cơ chế tự sửa lỗi (Self-Healing Loop) và trình mô phỏng thực thi trực quan.
 - **Hệ thống mẫu biểu & Quy chuẩn toàn diện:** Bảng viết tắt 29 loại văn bản hành chính (Quy định là `QyĐ`), hệ thống 15 mẫu chính thức (Mẫu 1.1-1.10, Phụ lục 2.1-2.2, Bản sao 3.1-3.2), cẩm nang quy tắc viết hoa (Phụ lục II), nghiệp vụ quản lý văn bản đi/đến (8 mẫu sổ Phụ lục IV), lập hồ sơ nộp lưu (Phụ lục V) và chuẩn siêu dữ liệu (Metadata) điện tử (Phụ lục VI).
 
@@ -65,7 +65,7 @@ ND30_Skills_v2/
 │               ├── pdf_to_docx.py         # Module số hóa văn bản từ PDF sang Word sạch
 │               └── validate_docx.py       # Bộ thẩm định thể thức văn bản chuyên sâu quét cấu trúc XML/DOM
 ├── 30.signed.pdf                          # Văn bản gốc Nghị định 30/2020/NĐ-CP ký số từ Cổng TTĐT Chính phủ
-├── project_architecture.html              # Giao diện trực quan kiến trúc & blueprint A4 tương tác (by The Devio)
+├── index.html                             # Giao diện trực quan kiến trúc & blueprint A4 tương tác (by The Devio)
 ├── skills_workflow.html                   # Giao diện trực quan luồng hoạt động & simulator tương tác (by The Devio)
 ├── LICENSE                                # Giấy phép mã nguồn mở MIT
 └── README.md                              # Tài liệu dự án (by The Devio)
@@ -174,7 +174,7 @@ python .agent/skills/ND30_Skills/scripts/builder_docx.py "Quyet_dinh_moi.docx"
 > **Rà soát in ấn:** Sử dụng bảng danh mục kiểm tra trong tài liệu `07-checklist.md` khi cần in ra giấy để rà soát văn bản trước khi trình lãnh đạo ký duyệt.
 
 > [!IMPORTANT]
-> **Khám phá giao diện trực quan:** Mở [skills_workflow.html](skills_workflow.html) hoặc [project_architecture.html](project_architecture.html) trên trình duyệt để trải nghiệm bản đồ kiến trúc, cây quyết định và mô phỏng trực quan trang A4 chuẩn thể thức.
+> **Khám phá giao diện trực quan:** Mở [skills_workflow.html](skills_workflow.html) hoặc [index.html](index.html) trên trình duyệt để trải nghiệm bản đồ kiến trúc, cây quyết định và mô phỏng trực quan trang A4 chuẩn thể thức.
 
 ---
 
