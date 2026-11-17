@@ -71,6 +71,7 @@
     .brand-logo {
       width: 36px;
       height: 36px;
+      flex-shrink: 0;
       background: var(--primary);
       color: #fff;
       border-radius: 8px;
@@ -171,12 +172,118 @@
     }
 
     /* Tab navigation */
+    .tabs-scroll-shell {
+      position: relative;
+      margin-bottom: 1.5rem;
+    }
+
+    .tabs-scroll-shell::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      top: 0;
+      bottom: 6px;
+      width: 36px;
+      pointer-events: none;
+      background: linear-gradient(to right, rgba(250, 249, 246, 0), var(--bg) 85%);
+      transition: opacity 0.2s;
+    }
+
+    .tabs-scroll-shell.at-end::after {
+      opacity: 0;
+    }
+
+    .tabs-scroll-hint {
+      display: none;
+    }
+
+    .tabs-hint-text {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-weight: 600;
+    }
+
+    .tabs-nav-controls {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .tabs-counter {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      background: var(--card-sub);
+      border: 1px solid var(--border);
+      padding: 0.15rem 0.5rem;
+      border-radius: 999px;
+      color: var(--primary);
+    }
+
+    .tabs-arrow-btn {
+      width: 26px;
+      height: 26px;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      background: var(--card-bg);
+      color: var(--text);
+      font-weight: 700;
+      font-size: 0.9rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      padding: 0;
+      line-height: 1;
+    }
+
+    .tabs-arrow-btn:hover {
+      background: #f4f4f5;
+      border-color: #d4d4d8;
+    }
+
     .nav-tabs {
       display: flex;
       gap: 0.5rem;
-      margin-bottom: 2rem;
+      margin-bottom: 0;
       overflow-x: auto;
-      padding-bottom: 0.5rem;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: thin;
+      scrollbar-color: #a1a1aa #f4f4f5;
+      padding-bottom: 0.55rem;
+      padding-right: 1.5rem;
+      scroll-behavior: smooth;
+    }
+
+    .nav-tabs::-webkit-scrollbar {
+      height: 5px;
+    }
+
+    .nav-tabs::-webkit-scrollbar-track {
+      background: #f4f4f5;
+      border-radius: 999px;
+    }
+
+    .nav-tabs::-webkit-scrollbar-thumb {
+      background: #a1a1aa;
+      border-radius: 999px;
+    }
+
+    @media (max-width: 900px) {
+      .tabs-scroll-shell::after {
+        top: 2rem;
+      }
+
+      .tabs-scroll-hint {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 0.45rem;
+        font-size: 0.76rem;
+        color: var(--text-muted);
+        gap: 0.5rem;
+      }
     }
 
     .nav-tab-btn {
@@ -426,6 +533,7 @@
     /* Table Matrix */
     table.data-table {
       width: 100%;
+      min-width: 580px;
       border-collapse: collapse;
       font-size: 0.85rem;
       text-align: left;
@@ -513,6 +621,194 @@
       flex-wrap: wrap;
       gap: 1rem;
     }
+
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+      body {
+        padding: 1rem 0.875rem 2.5rem;
+        overflow-x: hidden;
+      }
+
+      nav {
+        gap: 0.75rem;
+        margin-bottom: 1.25rem;
+        padding-bottom: 1rem;
+      }
+
+      nav > div:last-child {
+        width: 100%;
+      }
+
+      nav > div:last-child .btn {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .brand-title h2 {
+        font-size: 1rem;
+        line-height: 1.3;
+      }
+
+      .brand-title p {
+        font-size: 0.72rem;
+      }
+
+      .intro-section {
+        margin-bottom: 1.25rem;
+      }
+
+      .intro-section h1 {
+        font-size: 1.4rem;
+        line-height: 1.3;
+      }
+
+      .intro-section p {
+        font-size: 0.88rem;
+      }
+
+      .metrics-bar {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.65rem;
+        margin-bottom: 1.25rem;
+      }
+
+      .metric-card {
+        padding: 0.85rem 0.9rem;
+      }
+
+      .metric-val {
+        font-size: 1.25rem;
+      }
+
+      .metric-lbl {
+        font-size: 0.73rem;
+      }
+
+      .tabs-scroll-shell {
+        margin-bottom: 1.25rem;
+      }
+
+      .nav-tabs {
+        gap: 0.4rem;
+      }
+
+      .nav-tab-btn {
+        padding: 0.55rem 0.9rem;
+        font-size: 0.8rem;
+      }
+
+      .panel {
+        padding: 1.1rem;
+        margin-bottom: 1rem;
+      }
+
+      .panel-header h3 {
+        font-size: 1.05rem;
+      }
+
+      .panel-header p {
+        font-size: 0.8rem;
+      }
+
+      .pipeline-grid {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+      }
+
+      .pipeline-card {
+        padding: 1rem;
+      }
+
+      .engine-item {
+        padding: 0.85rem;
+        gap: 0.75rem;
+      }
+
+      .engine-body h4,
+      .engine-body p,
+      .pipeline-card-desc {
+        word-break: break-word;
+        overflow-wrap: anywhere;
+      }
+
+      .a4-sheet-container {
+        padding: 0.65rem;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        justify-content: flex-start;
+      }
+
+      .a4-sheet {
+        min-width: 310px;
+        margin: 0 auto;
+        padding: 1.1rem 0.85rem 1.1rem 1.15rem;
+        font-size: 10px;
+      }
+
+      .spec-sidebar {
+        max-height: none;
+        overflow-y: visible;
+        padding-right: 0;
+      }
+
+      table.data-table th,
+      table.data-table td {
+        padding: 0.6rem 0.75rem;
+        font-size: 0.78rem;
+      }
+
+      .file-tree {
+        padding: 0.9rem;
+        font-size: 0.75rem;
+        overflow-x: auto;
+      }
+
+      .file-tree .tree-file {
+        padding-left: 1rem !important;
+      }
+
+      .file-tree .tree-folder {
+        padding-left: 0.5rem !important;
+      }
+
+      .tree-desc {
+        display: block;
+        margin-left: 0;
+        margin-bottom: 0.35rem;
+        font-size: 0.7rem;
+        line-height: 1.4;
+      }
+
+      footer {
+        margin-top: 2rem;
+        padding-top: 1rem;
+        font-size: 0.76rem;
+        text-align: center;
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .intro-section h1 {
+        font-size: 1.3rem;
+      }
+
+      .nav-tab-btn {
+        padding: 0.5rem 0.8rem;
+        font-size: 0.78rem;
+      }
+
+      .a4-sheet {
+        padding: 0.9rem 0.75rem 0.9rem 0.95rem;
+        font-size: 9.5px;
+      }
+    }
+
+    @media (max-width: 360px) {
+      .metrics-bar {
+        grid-template-columns: 1fr;
+      }
+    }
   </style>
 </head>
 <body>
@@ -562,12 +858,22 @@
   </div>
 
   <!-- Tab Bar -->
-  <div class="nav-tabs">
-    <button class="nav-tab-btn active" id="tabBtn1" onclick="switchTab(1)">1. Kiến Trúc & Luồng Xử Lý</button>
-    <button class="nav-tab-btn" id="tabBtn2" onclick="switchTab(2)">2. Mô Phỏng Trang A4 Chuẩn</button>
-    <button class="nav-tab-btn" id="tabBtn3" onclick="switchTab(3)">3. Ma Trận Thẩm Định Thể Thức</button>
-    <button class="nav-tab-btn" id="tabBtn4" onclick="switchTab(4)">4. 6 Nguyên Tắc Cốt Lõi</button>
-    <button class="nav-tab-btn" id="tabBtn5" onclick="switchTab(5)">5. Cấu Trúc Thư Mục Dự Án</button>
+  <div class="tabs-scroll-shell" id="mainTabsShell">
+    <div class="tabs-scroll-hint">
+      <span class="tabs-hint-text">↔ Vuốt ngang để xem thêm các mục</span>
+      <div class="tabs-nav-controls">
+        <span class="tabs-counter" id="tabCounterBadge">Mục 1 / 5</span>
+        <button type="button" class="tabs-arrow-btn" onclick="stepTab(-1)" aria-label="Mục trước">‹</button>
+        <button type="button" class="tabs-arrow-btn" onclick="stepTab(1)" aria-label="Mục tiếp">›</button>
+      </div>
+    </div>
+    <div class="nav-tabs" id="mainNavTabs">
+      <button class="nav-tab-btn active" id="tabBtn1" onclick="switchTab(1)">1. Kiến Trúc & Luồng Xử Lý</button>
+      <button class="nav-tab-btn" id="tabBtn2" onclick="switchTab(2)">2. Mô Phỏng Trang A4 Chuẩn</button>
+      <button class="nav-tab-btn" id="tabBtn3" onclick="switchTab(3)">3. Ma Trận Thẩm Định Thể Thức</button>
+      <button class="nav-tab-btn" id="tabBtn4" onclick="switchTab(4)">4. 6 Nguyên Tắc Cốt Lõi</button>
+      <button class="nav-tab-btn" id="tabBtn5" onclick="switchTab(5)">5. Cấu Trúc Thư Mục Dự Án</button>
+    </div>
   </div>
 
   <!-- TAB 1: KIẾN TRÚC & LUỒNG XỬ LÝ -->
@@ -1005,7 +1311,7 @@
         <div class="tree-file">README.md <span class="tree-desc">- Tài liệu dự án toàn diện (by The Devio)</span></div>
         <div class="tree-file">LICENSE <span class="tree-desc">- Giấy phép phần mềm mã nguồn mở MIT</span></div>
         <div class="tree-file">30.signed.pdf <span class="tree-desc">- File scan ký số gốc Nghị định 30/2020/NĐ-CP (76 trang)</span></div>
-        <div class="tree-file">project_architecture.html <span class="tree-desc">- Trang kiến trúc toàn diện & bản đồ quy chuẩn (by The Devio)</span></div>
+        <div class="tree-file">index.html <span class="tree-desc">- Trang kiến trúc toàn diện & bản đồ quy chuẩn (by The Devio)</span></div>
         <div class="tree-file">skills_workflow.html <span class="tree-desc">- Sơ đồ luồng hoạt động & mô phỏng luồng thực thi (by The Devio)</span></div>
         
         <div class="tree-folder" style="padding-left: 1.5rem; margin-top: 6px;">.agent/skills/ND30_Skills/</div>
@@ -1037,7 +1343,18 @@
   </footer>
 
   <script>
+    let currentTab = 1;
+
+    function updateTabsFade() {
+      const nav = document.getElementById('mainNavTabs');
+      const shell = document.getElementById('mainTabsShell');
+      if (!nav || !shell) return;
+      const isAtEnd = nav.scrollLeft + nav.clientWidth >= nav.scrollWidth - 4;
+      shell.classList.toggle('at-end', isAtEnd);
+    }
+
     function switchTab(tabNum) {
+      currentTab = tabNum;
       for (let i = 1; i <= 5; i++) {
         const content = document.getElementById(`tabContent${i}`);
         const btn = document.getElementById(`tabBtn${i}`);
@@ -1045,13 +1362,33 @@
           if (i === tabNum) {
             content.style.display = 'block';
             btn.classList.add('active');
+            btn.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
           } else {
             content.style.display = 'none';
             btn.classList.remove('active');
           }
         }
       }
+      const badge = document.getElementById('tabCounterBadge');
+      if (badge) {
+        badge.textContent = `Mục ${tabNum} / 5`;
+      }
+      updateTabsFade();
     }
+
+    function stepTab(delta) {
+      const next = Math.min(5, Math.max(1, currentTab + delta));
+      if (next !== currentTab) {
+        switchTab(next);
+      }
+    }
+
+    const mainNavTabsEl = document.getElementById('mainNavTabs');
+    if (mainNavTabsEl) {
+      mainNavTabsEl.addEventListener('scroll', updateTabsFade, { passive: true });
+    }
+    window.addEventListener('resize', updateTabsFade);
+    updateTabsFade();
 
     function highlightSpec(key) {
       const cards = document.querySelectorAll('.spec-card');
